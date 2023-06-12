@@ -144,7 +144,7 @@ function gs()  { git status --short }
 function gss() { git status -v }
 
 # git push
-function gs()  { git push -u origin main }
+function gpush()  { git push -u origin main }
 
 # explorer
 function open() { explorer $args }
