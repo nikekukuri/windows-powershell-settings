@@ -61,7 +61,10 @@ function _fzf_compgen_dir() {
 # 
 #     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($command)
 # }
-
+#
+# 下記のコマンドの実行が必要（PSFzfのPowerShellへのインストール）
+# Install-Module -Scope CurrentUser PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 #-----------------------------------------------------
 # Linux like commands
@@ -109,10 +112,9 @@ Set-Alias vim nvim
 function ..() { cd ../ }
 function ...() { cd ../../ }
 function ....() { cd ../../../ }
+function cdpro() { cd "~\OneDrive\ドキュメント\PowerShell\" }
 function cdr() { fd -H -t d -E .git -E node_modules | fzf | cd }
 Set-Alias cdz zi
-function buscdd() { ls -1 C:\\Work\\treng\\Bus\\data | rg .*$Arg1.*_xrf | fzf | % { cd C:\\Work\\treng\\Bus\\data\\$_ } }
-function buscdw() { ls -1 C:\\Work\\treng\\Bus\\work | rg .*$Arg1.*_xrf | fzf | % { cd C:\\Work\\treng\\Bus\\work\\$_ } }
 
 # Copy current path
 function cpwd() { Convert-Path . | Set-Clipboard }
@@ -140,6 +142,9 @@ function glls()  { git log --graph --all --date=format:'%Y-%m-%d %H:%M' --pretty
 # git status
 function gs()  { git status --short }
 function gss() { git status -v }
+
+# git push
+function gs()  { git push -u origin main }
 
 # explorer
 function open() { explorer $args }
